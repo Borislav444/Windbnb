@@ -25,6 +25,7 @@ export default function ModalWindow(props){
      function handleSumit(event){
        setAdults(event.target.value)
        setChildren(event.target.value)
+       setSearchTearm(event.target.value)
        props.setStays(children + adults)
        
      }
@@ -53,6 +54,7 @@ export default function ModalWindow(props){
              type="text" 
              name="location" 
              placeholder='Add location'
+             value={searchThearm}
               onChange={(event)=>{
                 setSearchTearm(event.target.value)
               }}
@@ -107,7 +109,7 @@ export default function ModalWindow(props){
              }).map((val,key)=>{
                  return(
                      <div className={user} key={key}>
-                         <p>{val.city},{val.country}</p>
+                         <p>{val.city} , {val.country}</p>
                      </div>
                  )
              })
