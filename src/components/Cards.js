@@ -12,7 +12,8 @@ export default function Cards(){
                     rating={stay.rating}
                     type={stay.type}
                     beds={stay.beds}
-                    image={stay.photo}                 
+                    image={stay.photo} 
+                    maxGuests={stay.maxGuests}                
                />
     })
     return(

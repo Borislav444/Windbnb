@@ -15,6 +15,7 @@ export default function CardList(props){
           <span><FaStar style={style}/>{props.rating}</span>
         </div>
           <h2>{props.title}</h2> 
+          <p>The max number of guests: {props.maxGuests}</p>
           
     </div>
     

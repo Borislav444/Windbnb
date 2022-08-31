@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
  import Logo from '../images/logo.png'
  import '../styles/header.css'
  import ModalWindow from './ModalWindow'
  
 
 export default function Header(){
-     
-    
+   const[stays, setStays] = useState(0)  
+   
     return(
         <div>
 
@@ -14,11 +14,11 @@ export default function Header(){
           <div className='headerLogo'>
              <img src={Logo} alt="logo"/>
           </div>
-          <ModalWindow/>
+          <ModalWindow stays={stays} setStays={setStays}/>
         </div>
         <div className="cardHeader">
         <h1>Stays in Finlands</h1>
-         <p>12+stays</p>
+         <p>{stays} stays</p>
         </div>
     </div>
         

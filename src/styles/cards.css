@@ -16,6 +16,10 @@ body{
     
 }
 
+.cardList p{
+    color:#828282;
+}
+
 .cardList img{
 
     width: 395px;

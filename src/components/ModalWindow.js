@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import '../styles/header.css'
 import Stays from '../stays.json'
 
-export default function ModalWindow(){
+export default function ModalWindow(props){
     const[style, setStyle] = useState('headerInputs')
     const[btn, setBtn] = useState('location')
     const[search, setSearch]=useState("searchBtn")
@@ -12,7 +12,7 @@ export default function ModalWindow(){
     const[searchThearm, setSearchTearm] = useState("")
     const[adults, setAdults] = useState(0)
     const[children, setChildren] = useState(0)
-
+  
      function handleClick(){
         setStyle("headerInput")
         setBtn('locations')
@@ -22,8 +22,11 @@ export default function ModalWindow(){
         setCounter('counters')
      }
 
-     function handleSumit(){
-        console.log({adults}, {children})
+     function handleSumit(event){
+       setAdults(event.target.value)
+       setChildren(event.target.value)
+       props.setStays(children + adults)
+       
      }
 
    function plus(){
@@ -60,14 +63,14 @@ export default function ModalWindow(){
          type="text"
          placeholder='Add guset'
          name="add guest"
-         value={adults + children}
+         value={`${adults + children} guests`}
          onChange={(event)=>{
            setAdults(event.target.value)
            setChildren(event.target.value)
        
          }}/>
         
-           <button className={search} type='search'  onClick={handleSumit}>Search</button>
+           <button className={search} type='submit'  onClick={handleSumit}>Submit</button>
            <div className={counter}>
             <div className="counterAdult">
            <div>
@@ -96,9 +99,9 @@ export default function ModalWindow(){
             
           {Stays.filter((val)=>{
               if(searchThearm === ''){
-                  return val
-                } else if(val.city.toLowerCase().includes(searchThearm.toLowerCase())){
                    return val
+                } else if(val.city.toLowerCase().includes(searchThearm.toLowerCase())){
+                  return val
                  }
                  
              }).map((val,key)=>{
